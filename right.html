@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <style>
+body {
+    background-color: #6fc7e7;
+    color: white;
+    text-align: center;
+}
+</style>
+
+<h1>Thể Loại </h1>
+
+<h3><a href="#" onclick="chonRock()">1. Chill</a><br></h3>
+<h3><a href="#" onclick="chonRemix()">2. Rap</a></h3>
+
+<script>
+function chonRock() {
+    parent.frames["menu"].location = "rock.html";
+    parent.frames["footer"].location = "footer_rock.html";
+}
+
+function chonRemix() {
+    parent.frames["menu"].location = "remix.html";
+    parent.frames["footer"].location = "footer_remix.html";
+}
+</script>
+
+</body>
+</html>
