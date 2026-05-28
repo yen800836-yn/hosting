@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tong Bai Tap Tran Thi Xuan Yen</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+}
+
+body{
+background:
+radial-gradient(circle at top,#5a0333,#c75dbe 60%,#310618);
+min-height:100vh;
+overflow:hidden;
+color:#fff;
+}
+
+#bg{
+position:fixed;
+inset:0;
+z-index:0;
+}
+
+.wrapper{
+position:relative;
+z-index:2;
+max-width:1100px;
+margin:auto;
+padding:50px 20px;
+}
+
+.title{
+text-align:center;
+font-size:52px;
+font-weight:800;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+font-size:20px;
+color:#d8d8d8;
+margin-bottom:35px;
+}
+
+.dashboard{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.12);
+border-radius:35px;
+padding:30px;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.card{
+display:flex;
+align-items:center;
+gap:20px;
+
+padding:22px;
+
+min-height:120px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.18);
+
+border-radius:25px;
+
+text-decoration:none;
+color:white;
+
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+background:rgba(255,255,255,.12);
+}
+
+.icon{
+width:70px;
+height:70px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:18px;
+
+font-size:28px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.15);
+}
+
+.text h2{
+font-size:28px;
+font-weight:800;
+margin-bottom:5px;
+}
+
+.text p{
+font-size:15px;
+color:#d9d9d9;
+}
+
+.footer{
+text-align:center;
+margin-top:20px;
+font-size:14px;
+color:#d0d0d0;
+}
+
+@media(max-width:900px){
+
+.dashboard{
+grid-template-columns:1fr;
+}
+
+.title{
+font-size:34px;
+}
+
+.subtitle{
+font-size:16px;
+}
+
+.text h2{
+font-size:22px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="wrapper">
+
+<h1 class="title">
+TRANG CHỦ HỆ THỐNG
+</h1>
+
+<p class="subtitle">
+Chọn chức năng để tiếp tục
+</p>
+
+<div class="dashboard">
+
+<a href="index.html" class="card">
+<div class="icon">👋🏻</div>
+
+<div class="text">
+<h2>Trang Giới Thiệu</h2>
+<p>Giới thiệu bản thân</p>
+</div>
+</a>
+
+<a href="baitho.html" class="card">
+<div class="icon">📖</div>
+
+<div class="text">
+<h2>Bài Thơ</h2>
+<p>Thư viện bài thơ</p>
+</div>
+</a>
+
+<a href="FRAMESET.html" class="card">
+<div class="icon">🎵</div>
+
+<div class="text">
+<h2>Web nhạc</h2>
+<p>Web nhạc cơ bản</p>
+</div>
+</a>
+
+<a href="dangki.html" class="card">
+<div class="icon">✍🏻</div>
+
+<div class="text">
+<h2>Thông tin đăng kí</h2>
+</div>
+</a>
+
+<a href="lms.html" class="card">
+<div class="icon">💬</div>
+
+<div class="text">
+<h2>Login LMS.TVU</h2>
+</div>
+</a>
+
+<a href="tinhoc.html" class="card">
+<div class="icon">🖥️</div>
+
+<div class="text">
+<h2>Phần mềm tin học</h2>
+<p>Đánh giá năng lực</p>
+</div>
+</a><a href="https://drl.tvu.edu.vn" target="_blank" class="card">
+<div class="icon">🔗</div>
+
+<div class="text">
+<h2>DRL TVU</h2>
+<p>Mở trang web chính thức</p>
+</div>
+</a>
+
+</div>
+
+<div class="footer">
+© Trang chủ hệ thống • Dashboard menu
+</div>
+
+</div>
+
+<script>
+
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+
+resize();
+
+let particles=[];
+
+for(let i=0;i<70;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+
+vx:(Math.random()-0.5)*0.4,
+vy:(Math.random()-0.5)*0.4
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+for(let i=0;i<particles.length;i++){
+
+let p=particles[i];
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ctx.fillStyle="#79d7ff";
+ctx.fill();
+
+for(let j=i+1;j<particles.length;j++){
+
+let q=particles[j];
+
+let d=Math.hypot(
+p.x-q.x,
+p.y-q.y
+);
+
+if(d<120){
+
+ctx.beginPath();
+ctx.moveTo(p.x,p.y);
+ctx.lineTo(q.x,q.y);
+
+ctx.strokeStyle=
+`rgba(121,215,255,${1-d/120})`;
+
+ctx.stroke();
+}
+
+}
+}
+
+requestAnimationFrame(draw);
+}
+
+draw();
+
+window.addEventListener("resize",resize);
+
+</script>
+
+</body>
+</html>
